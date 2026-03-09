@@ -24,15 +24,15 @@ for index,row in data.iterrows():
     prediction = model.predict(input_data)[0]
 
     payload = {
-        "sensor2":float(row["sensor2"]),
-        "sensor3":float(row["sensor3"]),
-        "sensor4":float(row["sensor4"]),
-        "sensor7":float(row["sensor7"]),
-        "sensor11":float(row["sensor11"]),
-        "sensor12":float(row["sensor12"]),
-        "sensor15":float(row["sensor15"]),
-        "failure_prediction":int(prediction)
-    }
+    "temperature": float(row["sensor2"]),
+    "pressure": float(row["sensor3"]),
+    "turbine_temp": float(row["sensor4"]),
+    "core_speed": float(row["sensor7"]),
+    "fuel_flow": float(row["sensor11"]),
+    "bypass_ratio": float(row["sensor12"]),
+    "fan_speed": float(row["sensor15"]),
+    "failure_prediction": int(prediction)
+}
 
     client.publish(
         "v1/devices/me/telemetry",
